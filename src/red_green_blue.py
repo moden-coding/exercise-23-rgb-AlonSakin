@@ -3,13 +3,14 @@
 import re
 
 def red_green_blue(filename="src/rgb.txt"):
-    
-
+    with open(filename, "r") as f:
+        colors = [re.findall(r"(\d+)\s+(\d+)\s+(\d+)\s+(.*)", color)[0] for color in f.read().split('\n')]
+    return ['\t'.join(color) for color in colors]
 
 
 def main():
     result = red_green_blue()
-    print()
+    print(result)
 
     #print(f"The result should be a list, it is a {type(result)}
     #print(f"The length of the list should be 753, was {len(result)}   
